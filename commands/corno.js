@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'corno',
-    description: 'Um comando feito para testar a funcionalidade do bot.',
+    description: 'Feito para testar a funcionalidade do bot.',
     args: false,
 	execute(message, args) {
         var author = message.author;
