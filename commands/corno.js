@@ -2,7 +2,7 @@ module.exports = {
 	name: 'corno',
     description: 'Feito para testar a funcionalidade do bot.',
     args: false,
-	execute(message, args) {
+	async execute(message, args) {
         var author = message.author;
 
         console.log(`Corno received in ${message.guild.name}, sent by ${message.author.username}`)

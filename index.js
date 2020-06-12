@@ -45,7 +45,7 @@ client.on("message", async (message) => {
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply("ocorreu um erro na execução desse comando.");
+    message.channel.send(`${message.author} ocorreu um erro na execução desse comando.`);
   }
 });
 

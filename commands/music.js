@@ -3,7 +3,7 @@ const ytdl = require('ytdl-core-discord');
 
 module.exports = {
   name: "music",
-  description: "Toca músicas do youtube. Pode criar playlists",
+  description: "Toca músicas do youtube.",
   args: true,
   usage: "<URL>",
   async execute(message, args) {

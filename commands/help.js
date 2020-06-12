@@ -4,9 +4,9 @@ const prefix = config.prefix;
 module.exports = {
   name: "help",
   description: "Lista os comandos do bot, ou um comando específico.",
-  usage: `<comando>`,
+  usage: `<|comando|>`,
   args: false,
-  execute(message, args) {
+  async execute(message, args) {
     const data = [];
     const { commands } = message.client;
 
@@ -14,7 +14,7 @@ module.exports = {
       data.push("Comandos:");
       data.push(commands.map((command) => command.name).join(", "));
       data.push(
-        `\nEnvie \`${prefix}help [command name]\` para mais informações.`
+        `\nEnvie \`${prefix}help <comando>\` para mais informações.`
       );
 
       return message.channel.send(data, { split: true });
