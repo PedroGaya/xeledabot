@@ -3,18 +3,18 @@ const prefix = config.prefix;
 
 module.exports = {
   name: "help",
-  description: "Lista os comandos do bot, ou um comando específico.",
-  usage: `<|comando|>`,
+  description: "Lists available commands, or details about specific ones.",
+  usage: `<command>`,
   args: false,
   async execute(message, args) {
     const data = [];
     const { commands } = message.client;
 
     if (!args.length) {
-      data.push("Comandos:");
+      data.push("Commands:");
       data.push(commands.map((command) => command.name).join(", "));
       data.push(
-        `\nEnvie \`${prefix}help <comando>\` para mais informações.`
+        `\nSend \`${prefix}help <command>\` for more information.`
       );
 
       return message.channel.send(data, { split: true });
@@ -25,15 +25,15 @@ module.exports = {
       commands.get(name);
 
     if (!command) {
-      return message.reply("Esse comando não existe.");
+      return message.reply("This command doesn't exist");
     }
 
-    data.push(`**Nome:** ${command.name}`);
+    data.push(`**Name:** ${command.name}`);
 
     if (command.description)
-      data.push(`**Descrição:** ${command.description}`);
+      data.push(`**Description:** ${command.description}`);
     if (command.usage)
-      data.push(`**Uso:** \`${prefix}${command.name} ${command.usage}\``);
+      data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
 
     message.channel.send(data, { split: true });
   },

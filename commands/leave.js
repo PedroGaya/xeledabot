@@ -1,6 +1,6 @@
 module.exports = {
   name: "leave",
-  description: "Sai do voice channel, se estiver conectado.",
+  description: "Leaves the current voice channel, if connected.",
   args: false,
   async execute(message, args) {
     const voiceChannel = message.guild.me.voice.channel;
@@ -9,7 +9,7 @@ module.exports = {
         voiceChannel.leave()
         console.log(`Left SKR voice channel.`)
     } else {
-        message.channel.send(`${message.author} Não estou em um canal de voz.`)
+        message.channel.send(`${message.author} I'm not in a voice channel.`)
     }
   },
 };
