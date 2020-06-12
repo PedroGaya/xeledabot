@@ -1,0 +1,29 @@
+const fs = require('fs')
+const ytdl = require('ytdl-core-discord');
+
+module.exports = {
+  name: "music",
+  description: "Toca músicas do youtube. Pode criar playlists",
+  args: true,
+  usage: "<URL>",
+  async execute(message, args) {
+    if (message.member.voice.channel) {
+      const connection = await message.member.voice.channel.join();
+      const dispatcher = await play(connection, args[0]);
+      
+      dispatcher.on("start", () => {
+        console.log(`Playing music on ${message.guild.name}`);
+      });
+
+      dispatcher.on("finish", () => {
+        console.log(`Stopped music on ${message.guild.name}`);
+      });
+
+      dispatcher.on("error", console.error);
+    }
+  },
+};
+
+async function play(connection, url) {
+	return connection.play(await ytdl(url), { type: 'opus' });
+}
