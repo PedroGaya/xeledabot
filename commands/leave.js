@@ -1,5 +1,6 @@
 module.exports = {
   name: "leave",
+  aliases: ["l"],
   description: "Leaves the current voice channel, if connected.",
   args: false,
   async execute(message, args) {

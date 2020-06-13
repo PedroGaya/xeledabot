@@ -3,6 +3,7 @@ const prefix = config.prefix;
 
 module.exports = {
   name: "help",
+  aliases: ["h"],
   description: "Lists available commands, or details about specific ones.",
   usage: `<command>`,
   args: false,
@@ -34,6 +35,8 @@ module.exports = {
       data.push(`**Description:** ${command.description}`);
     if (command.usage)
       data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
+    if (command.aliases)
+      data.push(`**Alternatives:** ${command.aliases}`);
 
     message.channel.send(data, { split: true });
   },
