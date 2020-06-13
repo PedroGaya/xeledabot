@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const config = require("./config.json");
+const helper = require("./helper.js")
 
 const { clientId, clientSecret, token } = config.auth;
 const prefix = config.prefix;
@@ -17,7 +18,11 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-client.once("ready", () => {
+client.once("ready", async () => {
+  await helper.generateBlob(config.random.url, config.random.key)
+    .then(res => res.json())
+    .then(json => console.log(json.result))
+
   console.log("Ready!");
 });
 
@@ -27,9 +32,8 @@ client.on("message", async (message) => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const commandName = args.shift().toLowerCase();
 
-  if (!client.commands.has(commandName)) return;
-
-  const command = client.commands.get(commandName);
+  const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+  if (!command) return;
 
   if (command.args && !args.length) {
     let reply = `${message.author} Não foram providenciados os parâmetros necessários.`;
