@@ -1,3 +1,5 @@
+const helper = require("../helper.js")
+
 module.exports = {
     name: 'corno',
     aliases: ['r'],
@@ -6,32 +8,6 @@ module.exports = {
     args: true,
 	async execute(message, args) {
         console.log(args)
-        var resultString = "";
-
-        for (const arg of args) {
-            if (isRoll(arg)) {
-                resultString = resultString.concat(evaluateRoll(arg))
-            } else {
-                resultString = resultString.concat(arg)
-            }
-        }
-
-        console.log(resultString)
-        
-        return message.channel.send(`${message.author} ${eval(resultString)}`)
+        return message.channel.send(`${message.author}: \`(${args.join("")})\` = ${helper.evalRoll(args)}`)
 	},
 };
-
-function isRoll(roll) {
-    if (!roll.includes('d')) {return false;}
-
-    var isRoll = true;
-    for (const arg of roll.split('d')) {
-        isRoll = isRoll && typeof(parseInt(arg)) == 'number'
-    }
-    return isRoll
-}
-
-function evaluateRoll(roll) { 
-    return "10"
-}
