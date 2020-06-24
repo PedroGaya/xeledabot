@@ -19,9 +19,9 @@ for (const file of commandFiles) {
 }
 
 client.once("ready", async () => {
-  await helper.generateBlob(config.random.url, config.random.key)
-    .then(res => res.json())
-    .then(json => console.log(json.result))
+  // await helper.generateBlob(config.random.url, config.random.key)
+  //   .then(res => res.json())
+  //   .then(json => console.log(json.result))
 
   console.log("Ready!");
 });
