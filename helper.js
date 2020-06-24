@@ -22,7 +22,8 @@ module.exports = {
         var resultString = "";
         const regex = /(\d*d\d+)/g
 
-        function getRoll(roll) { 
+        function getRoll(roll) {
+            console.log(roll) 
             return "10"
         }
 
