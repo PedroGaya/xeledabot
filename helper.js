@@ -20,27 +20,15 @@ module.exports = {
         // args looks like this:
         // args = ["10d6", "+", "10"]
         var resultString = "";
-
-        function isRoll(roll) {
-            if (!roll.includes('d')) {return false;}
-        
-            var isRoll = true;
-            for (const arg of roll.split('d')) {
-                isRoll = isRoll && typeof(parseInt(arg)) == 'number'
-            }
-            return isRoll
-        }
+        const regex = /(\d*d\d+)/g
 
         function getRoll(roll) { 
             return "10"
         }
 
         for (const arg of args) {
-            if (isRoll(arg)) {
-                resultString = resultString.concat(getRoll(arg))
-            } else {
-                resultString = resultString.concat(arg)
-            }
+            var result = regex.test(arg) ? getRoll(arg) : arg
+            resultString = resultString.concat(result)
         }
 
         return eval(resultString);

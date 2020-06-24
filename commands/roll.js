@@ -7,7 +7,11 @@ module.exports = {
     usage: '<XdY> + <XdY> + ...',
     args: true,
 	async execute(message, args) {
-        console.log(args)
-        return message.channel.send(`${message.author}: \`(${args.join("")})\` = ${helper.evalRoll(args)}`)
+        const regex = /(\d*d\d+)|([*+)(-/])|(\d+)/g
+        const parsed = args.join("").match(regex)
+
+        console.log(parsed)
+
+        return message.channel.send(`${message.author}: \`(${parsed.join("")})\` = ${helper.evalRoll(parsed)}`)
 	},
 };
