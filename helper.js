@@ -1,4 +1,7 @@
-const fetch = require('node-fetch');
+const fetch = require('node-fetch')
+const MersenneTwister = require('mersenne-twister')
+const cache = require('./cache.js')
+
 
 module.exports = {
     async generateBlob(url, key) { 
@@ -8,7 +11,7 @@ module.exports = {
             params: {
                 apiKey: key,
                 n: 20,
-                size: 64,
+                size: 16,
                 format: "hex"
             },
             id: "XeledaBot",
@@ -19,12 +22,33 @@ module.exports = {
     evalRoll(args) {
         // args looks like this:
         // args = ["10d6", "+", "10"]
-        var resultString = "";
         const regex = /(\d*d\d+)/g
+        var resultString = "";
+
 
         function getRoll(roll) {
-            console.log(roll) 
-            return "10"
+            const match = /(\d*)d(\d+)/g
+            const array = match.exec(roll)
+
+            const diceAmount = array[1] ? array[1] : 1
+            const diceSize = array[2]
+
+            const generator = new MersenneTwister()
+            const data = cache.get()
+            const seeds = data.seeds
+
+            const callSeed = Math.floor(Math.random() * 19)
+            const randomInt = parseInt(seeds[callSeed], 16)
+
+            generator.init_seed(randomInt)
+
+            var result = 0
+
+            for (let i = 0; i < diceAmount; i++) {
+                result += Math.floor(generator.random() * diceSize) + 1
+            }
+            
+            return result.toString()
         }
 
         for (const arg of args) {

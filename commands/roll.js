@@ -9,9 +9,6 @@ module.exports = {
 	async execute(message, args) {
         const regex = /(\d*d\d+)|([*+)(-/])|(\d+)/g
         const parsed = args.join("").match(regex)
-
-        console.log(parsed)
-
         return message.channel.send(`${message.author}: \`(${parsed.join("")})\` = ${helper.evalRoll(parsed)}`)
 	},
 };
