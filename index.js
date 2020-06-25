@@ -1,7 +1,8 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const config = require("./config.json");
-const helper = require("./helper.js")
+const helper = require("./helper.js");
+const cache = require('./cache.js');
 
 const { clientId, clientSecret, token } = config.auth;
 const prefix = config.prefix;
@@ -19,9 +20,9 @@ for (const file of commandFiles) {
 }
 
 client.once("ready", async () => {
-  // await helper.generateBlob(config.random.url, config.random.key)
-  //   .then(res => res.json())
-  //   .then(json => console.log(json.result))
+   await helper.generateBlob(config.random.url, config.random.key)
+     .then(res => res.json())
+     .then(json => cache.set({seeds: json.result.random.data}))
 
   console.log("Ready!");
 });
