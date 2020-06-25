@@ -1,10 +1,10 @@
 const helper = require("../helper.js")
 
 module.exports = {
-    name: 'corno',
+    name: 'roll',
     aliases: ['r'],
-    description: 'Rolls any set of dice witht the format XdY',
-    usage: '<XdY> + <XdY> + ...',
+    description: 'Rolls any set of dice with the format XdY',
+    usage: '<XdY> + 10 + ...',
     args: true,
 	async execute(message, args) {
         const regex = /(\d*d\d+)|([*+)(-/])|(\d+)/g
