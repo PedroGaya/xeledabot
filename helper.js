@@ -33,19 +33,25 @@ module.exports = {
             const diceAmount = array[1] ? array[1] : 1
             const diceSize = array[2]
 
-            const generator = new MersenneTwister()
-            const data = cache.get()
-            const seeds = data.seeds
+            // const generator = new MersenneTwister()
+            // const data = cache.get()
+            // const seeds = data.seeds
 
-            const callSeed = Math.floor(Math.random() * 19)
-            const randomInt = parseInt(seeds[callSeed], 16)
+            // const callSeed = Math.floor(Math.random() * 19)
+            // const randomInt = parseInt(seeds[callSeed], 16)
 
-            generator.init_seed(randomInt)
+            // generator.init_seed(randomInt)
 
             var result = 0
 
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min
+            }
+
             for (let i = 0; i < diceAmount; i++) {
-                result += Math.floor(generator.random() * diceSize) + 1
+                result += getRandomInt(1, diceSize)
             }
             
             return result.toString()
