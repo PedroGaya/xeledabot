@@ -16,5 +16,8 @@
     "node-fetch": "^2.6.0",
     "sodium": "^3.0.2",
     "ytdl-core-discord": "^1.2.0"
+  },
+  "engines": {
+    "node": "13.0.1"
   }
 }
