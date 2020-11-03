@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "clientId": "720717715177996400",
+        "clientSecret": "6OKfkjdCpznC_cgZNq-MKhqz8jyKhALj",
+        "token": "NzIwNzE3NzE1MTc3OTk2NDAw.XuKG6w.q2hWiK4FEPDnzXGFwPUJ9386VG0"
+    },
+    "prefix": "x/",
+    "random": {
+        "url": "https://api.random.org/json-rpc/2/invoke",
+        "key": "970145e8-b4c9-417f-80f7-f23cc9a15eb4"
+    }
+}
