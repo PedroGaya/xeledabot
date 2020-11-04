@@ -1,5 +1,5 @@
-const data = require("../cache.js");
-const helper = require("../helper.js");
+const data = require("../core/cache.js");
+const helper = require("../core/helper.js");
 
 module.exports = {
   name: "pool",

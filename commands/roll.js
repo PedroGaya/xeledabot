@@ -1,4 +1,4 @@
-const helper = require("../helper.js")
+const helper = require("../core/helper.js")
 
 module.exports = {
     name: 'roll',
@@ -11,6 +11,6 @@ module.exports = {
         const parsed = args.join("").match(regex)
         const result = helper.evalRoll(parsed)
 
-        return message.channel.send(`${message.author}: \`(${result})\` = ${eval(result)}`)
+        return message.channel.send(`${message.author}: \`${result}\` = ${eval(result)}`)
 	},
 };

@@ -1,8 +1,8 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const config = require("./config.json");
-const helper = require("./helper.js");
-const cache = require('./cache.js');
+const helper = require("./core/helper.js");
+const cache = require('./core/cache.js');
 
 const prefix = config.prefix;
 
