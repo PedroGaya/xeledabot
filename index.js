@@ -4,7 +4,6 @@ const config = require("./config.json");
 const helper = require("./helper.js");
 const cache = require('./cache.js');
 
-const { clientId, clientSecret, token } = config.auth;
 const prefix = config.prefix;
 
 const client = new Discord.Client();

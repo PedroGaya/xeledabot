@@ -42,7 +42,7 @@ module.exports = {
 
             // generator.init_seed(randomInt)
 
-            var result = 0
+            var result = "("
 
             function getRandomInt(min, max) {
                 min = Math.ceil(min);
@@ -51,10 +51,10 @@ module.exports = {
             }
 
             for (let i = 0; i < diceAmount; i++) {
-                result += getRandomInt(1, diceSize)
+                result += `${getRandomInt(1, diceSize)}${i == diceAmount - 1 ? ")" : "+"}`
             }
             
-            return result.toString()
+            return result
         }
 
         for (const arg of args) {
@@ -62,7 +62,7 @@ module.exports = {
             resultString = resultString.concat(result)
         }
 
-        return eval(resultString);
+        return resultString;
     },
 }
 
