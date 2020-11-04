@@ -26,5 +26,5 @@ module.exports = {
 };
 
 async function play(connection, url) {
-	return connection.play(await ytdl(url), { type: 'opus', highWaterMark: 32 });
+	return connection.play(await ytdl(url), { type: 'opus' });
 }
