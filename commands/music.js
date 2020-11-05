@@ -17,7 +17,7 @@ module.exports = {
       });
 
       dispatcher.on("finish", () => {
-        play(connection, args[0])
+        await play(connection, args[0])
         console.log(`Stopped music on ${message.guild.name}`);
       });
 
