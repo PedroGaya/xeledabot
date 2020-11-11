@@ -8,7 +8,6 @@ module.exports = {
 
     if (voiceChannel) {
         voiceChannel.leave()
-        console.log(`Left SKR voice channel.`)
     } else {
         message.channel.send(`${message.author} I'm not in a voice channel.`)
     }

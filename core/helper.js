@@ -1,7 +1,5 @@
 const fetch = require('node-fetch')
 const MersenneTwister = require('mersenne-twister')
-const cache = require('./cache.js')
-
 
 module.exports = {
     async generateBlob(url, key) { 
@@ -32,15 +30,6 @@ module.exports = {
 
             const diceAmount = array[1] ? array[1] : 1
             const diceSize = array[2]
-
-            // const generator = new MersenneTwister()
-            // const data = cache.get()
-            // const seeds = data.seeds
-
-            // const callSeed = Math.floor(Math.random() * 19)
-            // const randomInt = parseInt(seeds[callSeed], 16)
-
-            // generator.init_seed(randomInt)
 
             var result = "("
 
