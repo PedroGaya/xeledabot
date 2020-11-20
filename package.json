@@ -21,7 +21,7 @@
     "ytdl-core-discord": "^1.2.4"
   },
   "engines": {
-    "node": "13.0.1"
+    "node": "15.2.1"
   },
   "repository": {
     "type": "git",
