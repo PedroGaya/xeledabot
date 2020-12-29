@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const MersenneTwister = require('mersenne-twister')
 
 module.exports = {
     async generateBlob(url, key) { 

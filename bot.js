@@ -18,10 +18,6 @@ for (const file of commandFiles) {
 }
 
 client.once("ready", async () => {
-  //  await helper.generateBlob(config.random.url, config.random.key)
-  //    .then(res => res.json())
-  //    .then(json => cache.set({seeds: json.result.random.data}))
-
   console.log("Ready!");
 });
 
