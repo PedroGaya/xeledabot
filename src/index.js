@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const fs = require("fs");
 const Discord = require("discord.js");
 const config = require("../config.json");
@@ -9,7 +13,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const commandFiles = fs
-  .readdirSync("./commands")
+  .readdirSync("./src/commands")
   .filter((file) => file.endsWith(".js"));
 
 for (const file of commandFiles) {

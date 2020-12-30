@@ -1,5 +1,4 @@
-const config = require("../config.json");
-const prefix = config.prefix;
+const prefix = 'x/';
 
 module.exports = {
   name: "help",
