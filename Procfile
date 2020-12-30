@@ -1,2 +1,1 @@
-worker: node index.js
-init_db: node sequelize\db_init.js --force
+worker: node src/index.js

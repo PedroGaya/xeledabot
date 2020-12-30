@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const config = require("./config.json");
+const config = require("../config.json");
 const helper = require("./core/helper.js");
 
 const prefix = config.prefix;
