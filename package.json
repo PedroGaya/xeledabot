@@ -2,9 +2,9 @@
   "name": "xeledabot",
   "version": "1.0.0",
   "description": "A discord bot for managing RPGs",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,11 +12,7 @@
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.2.0",
     "ffmpeg-static": "^4.2.2",
-    "mersenne-twister": "^1.1.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
-    "sequelize": "^6.3.5",
     "sodium": "^3.0.2",
     "ytdl-core": "^4.0.3",
     "ytdl-core-discord": "^1.2.4"
