@@ -22,7 +22,8 @@ for (const file of commandFiles) {
 }
 
 client.once("ready", async () => {
-  console.log("Ready!");
+  console.log("XeledaBot is ready.");
+  console.log(`Process started in ${process.env.NODE_ENV} enviroment.`)
 });
 
 client.on("message", async (message) => {
