@@ -1,42 +1,44 @@
-const prefix = 'x/';
+import { myClient, Command } from "../core/types";
 
-module.exports = {
-  name: "help",
-  aliases: ["h"],
-  description: "Lists available commands, or details about specific ones.",
-  usage: `<command>`,
-  args: false,
-  async execute(message, args) {
-    const data = [];
-    const { commands } = message.client;
+const prefix = "x/";
 
-    if (!args.length) {
-      data.push("Commands:");
-      data.push(commands.map((command) => command.name).join(", "));
-      data.push(
-        `\nSend \`${prefix}help <command>\` for more information.`
-      );
+export const help: Command = {
+	name: "help",
+	aliases: ["h"],
+	description: "Lists available commands, or details about specific ones.",
+	usage: `<command>`,
+	args: false,
+	execute: (message, args) => {
+		const data = [];
+		const { commands } = message.client as myClient;
 
-      return message.channel.send(data, { split: true });
-    }
+		if (!args.length) {
+			data.push("Commands:");
+			data.push(commands.map((command) => command.name).join(", "));
+			data.push(
+				`\nSend \`${prefix}help <command>\` for more information.`
+			);
 
-    const name = args[0].toLowerCase();
-    const command =
-      commands.get(name);
+			return message.channel.send(data, { split: true });
+		}
 
-    if (!command) {
-      return message.reply("This command doesn't exist");
-    }
+		const name = args[0].toLowerCase();
+		const command = commands.get(name);
 
-    data.push(`**Name:** ${command.name}`);
+		if (!command) {
+			return message.reply("This command doesn't exist");
+		}
 
-    if (command.description)
-      data.push(`**Description:** ${command.description}`);
-    if (command.usage)
-      data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``);
-    if (command.aliases)
-      data.push(`**Alternatives:** ${command.aliases}`);
+		data.push(`**Name:** ${command.name}`);
 
-    message.channel.send(data, { split: true });
-  },
+		if (command.description)
+			data.push(`**Description:** ${command.description}`);
+		if (command.usage)
+			data.push(
+				`**Usage:** \`${prefix}${command.name} ${command.usage}\``
+			);
+		if (command.aliases) data.push(`**Alternatives:** ${command.aliases}`);
+
+		message.channel.send(data, { split: true });
+	},
 };
