@@ -1,5 +1,9 @@
+var loginToken;
 if (process.env.NODE_ENV !== "production") {
 	require("dotenv").config();
+	loginToken = process.env.DEV_BOT_TOKEN;
+} else {
+	loginToken = process.env.PROD_BOT_TOKEN;
 }
 
 import fs = require("fs");
@@ -67,4 +71,4 @@ client.on("message", async (message: Discord.Message) => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(loginToken);
