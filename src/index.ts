@@ -4,24 +4,32 @@ if (process.env.NODE_ENV !== "production") {
 
 import fs = require("fs");
 import Discord = require("discord.js");
-import { Client, Command } from "./core/types";
+import { Command, myClient } from "./core/types";
 
 const prefix = "x/";
 
-const client = new Discord.Client() as Client;
+const client = new Discord.Client() as myClient;
 client.commands = new Discord.Collection();
+
+process.stdout.write("Loading commands...");
 
 const commandFiles = fs
 	.readdirSync("./src/commands")
-	.filter((file) => file.endsWith(".ts"));
+	.filter((file) => file.endsWith(".ts"))
+	.map((file) => file.replace(".ts", ""));
 
 for (const file of commandFiles) {
-	const command: Command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+	import(`./commands/${file}`).then((result) => {
+		const cmd: Command = result[file];
+		// Import doesn't return the module, but a reponse obj. with the module in it.
+		client.commands.set(cmd.name, cmd);
+	});
 }
 
+process.stdout.write("	Done!\n");
+
 client.once("ready", async () => {
-	console.log("XeledaBot is ready.");
+	console.log("DMBot is ready.");
 	console.log(`Process started in ${process.env.NODE_ENV} enviroment.`);
 });
 

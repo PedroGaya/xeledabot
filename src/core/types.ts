@@ -1,6 +1,6 @@
 import Discord = require("discord.js");
 
-export type Client = Discord.Client & {
+export type myClient = Discord.Client & {
 	commands: Discord.Collection<string, Command>;
 };
 
