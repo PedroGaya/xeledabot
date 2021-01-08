@@ -1,5 +1,6 @@
 var loginToken;
-if (process.env.NODE_ENV !== "production") {
+const isDev = process.env.NODE_ENV !== "production";
+if (isDev) {
 	require("dotenv").config();
 	loginToken = process.env.DEV_BOT_TOKEN;
 } else {
@@ -19,7 +20,9 @@ process.stdout.write("Loading commands...");
 
 const commandFiles = fs
 	.readdirSync("./src/commands")
-	.filter((file) => file.endsWith(".ts"))
+	.filter((file) =>
+		file.endsWith(".ts") && isDev ? true : !file.startsWith("dev")
+	)
 	.map((file) => file.replace(".ts", ""));
 
 for (const file of commandFiles) {
