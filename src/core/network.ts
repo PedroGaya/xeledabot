@@ -1,24 +1,20 @@
 import fetch from "node-fetch";
 
-export async function callRandomDotOrgAPI(url: string, key: string) {
-	const request = {
-		jsonrpc: "2.0",
-		method: "generateBlobs",
-		params: {
-			apiKey: key,
-			n: 20,
-			size: 16,
-			format: "hex",
-		},
-		id: "XeledaBot",
-	};
-	return post(url, request);
-}
+export const request = async (
+	query: string,
+	variables?: string,
+	endpoint?: string
+) => {
+	const path = endpoint ?? process.env.GRAPHQL_URL ?? "No endpoint defined.";
 
-function post(path: string, data: any) {
 	return fetch(path, {
 		method: "POST",
-		body: JSON.stringify(data),
-		headers: { "Content-Type": "application/json" },
-	});
-}
+		headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		},
+		body: JSON.stringify({ query, variables }),
+	})
+		.then((r) => r.json())
+		.then((r) => r.data);
+};
