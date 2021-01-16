@@ -28,7 +28,6 @@ const commandFiles = fs
 for (const file of commandFiles) {
 	import(`./commands/${file}`).then((result) => {
 		const cmd: Command = result[file];
-		// Import doesn't return the module, but a reponse obj. with the module in it.
 		client.commands.set(cmd.name, cmd);
 	});
 }
