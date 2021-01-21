@@ -12,3 +12,19 @@ export type Command = {
 	args: boolean;
 	execute: (message: Discord.Message, args: string[]) => Promise<any> | void;
 };
+
+export type Game = {
+	name: string;
+	sheets: DiceSheet[];
+};
+
+export type DiceSheet = {
+	name: string;
+	owner: string;
+	rolls: Dice[];
+};
+
+export type Dice = {
+	name: string;
+	dice: string;
+};
