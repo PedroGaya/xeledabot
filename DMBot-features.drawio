@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-01-12T18:20:11.991Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="kFwHyPy2PTFmkh2rFqu-" version="13.10.0" type="embed">
+<mxfile host="65bd71144e" modified="2021-01-19T19:13:57.888Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="inOPSOpi4Cqacztvua_f" version="13.10.0" type="embed" pages="2">
     <diagram id="2LbESuUhRv7emfAW9sft" name="Page-1">
-        <mxGraphModel dx="804" dy="478" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1060" dy="478" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -28,7 +28,7 @@
                 <mxCell id="w4-q0xeYVS4qOGAkazt8-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="w4-q0xeYVS4qOGAkazt8-7" target="w4-q0xeYVS4qOGAkazt8-10" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w4-q0xeYVS4qOGAkazt8-7" target="w4-q0xeYVS4qOGAkazt8-2">
+                <mxCell id="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="w4-q0xeYVS4qOGAkazt8-7" target="w4-q0xeYVS4qOGAkazt8-2" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="w4-q0xeYVS4qOGAkazt8-7" value="Character Sheets" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -99,6 +99,20 @@
                 </mxCell>
                 <mxCell id="sqYL6eQrPugjWnCz3RB1-16" value="Auth?" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="60" y="110" width="90" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="4OcmKdDfYQKkvuLpytxx" name="Page-2">
+        <mxGraphModel dx="1060" dy="1647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="2sqTcQ6HBdhnPYRgHcJu-0"/>
+                <mxCell id="2sqTcQ6HBdhnPYRgHcJu-1" parent="2sqTcQ6HBdhnPYRgHcJu-0"/>
+                <mxCell id="2sqTcQ6HBdhnPYRgHcJu-2" value="&lt;h1&gt;Step 1&lt;/h1&gt;&lt;p&gt;x/setup&lt;/p&gt;&lt;p&gt;Called without arguments will start a daemon that will create a game and any sheets associated with it. Will also schedule a game session.&lt;/p&gt;&lt;p&gt;Called with arguments (&quot;game&quot; | &quot;sheet&quot; | &quot;session&quot;) will setup only the specified feature.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="2sqTcQ6HBdhnPYRgHcJu-1">
+                    <mxGeometry x="40" y="-800" width="240" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="dmkmpfxfPHDDNQLbWZgc-0" value="&lt;h1&gt;Step 2&lt;/h1&gt;&lt;p&gt;x/game | x/sheet | x/session&lt;/p&gt;&lt;p&gt;Will pull up all games, sheets or sessions associated with a server. You can use filters like name:&quot;example game&quot; or player:&quot;Wander#8114&quot;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="2sqTcQ6HBdhnPYRgHcJu-1">
+                    <mxGeometry x="320" y="-800" width="230" height="230" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
