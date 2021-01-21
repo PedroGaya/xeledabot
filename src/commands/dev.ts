@@ -5,9 +5,18 @@ export const dev: Command = {
 	description: "Placeholder command for executing functions",
 	args: false,
 	execute: async (message: Discord.Message, _args: string[]) => {
-		var author = message.author;
+		const devs = ["Wander#8114"];
 
-		var reply = `${author} sent this request`;
-		message.channel.send(`DEV: ${reply}`);
+		if (!devs.includes(message.author.tag)) {
+			return message.channel.send(
+				"You're not authorized to use this command."
+			);
+		}
+
+		const myEmbed = new Discord.MessageEmbed()
+			.setURL("http://localhost:3000")
+			.setTitle("my link");
+
+		message.channel.send(myEmbed);
 	},
 };
