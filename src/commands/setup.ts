@@ -1,5 +1,5 @@
 import Discord = require("discord.js");
-import { create_sheet, setup_game } from "../core/crud/setup_cmd/setup";
+import { create_sheet, setup_game } from "../core/db/setup";
 import { Command, Game } from "../core/types";
 
 const description = `
@@ -14,20 +14,11 @@ export const setup: Command = {
 	args: false,
 	aliases: ["stp"],
 	execute: async (message: Discord.Message, _args: string[]) => {
-		const filter = (m: Discord.Message) =>
-			message.author.id === m.author.id;
-
-		const options = {
-			time: 120000,
-			max: 1,
-			errors: ["time"],
-		};
-
 		await message.channel.send(
 			"I'm here to help you setup a game and some sheets to start. "
 		);
 
-		const game_name = await setup_game(message, filter, options);
+		const game_name = await setup_game(message);
 
 		const notice = `
 		Dice sheets work by storing either rolls or outright values.
@@ -41,7 +32,7 @@ export const setup: Command = {
 
 		await message.channel.send(notice);
 
-		const sheet = await create_sheet(message, filter, options);
+		const sheet = await create_sheet(message);
 
 		var game: Game = {
 			name: game_name ?? "error",

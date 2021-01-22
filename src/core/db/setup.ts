@@ -1,16 +1,19 @@
 import Discord = require("discord.js");
-import { Dice, DiceSheet } from "../../types";
+import { Dice, DiceSheet } from "../types";
 
-export const create_sheet = async (
-	message: Discord.Message,
-	filter: any,
-	options: any
-) => {
+const options = {
+	time: 120000,
+	max: 1,
+	errors: ["time"],
+};
+
+export const create_sheet = async (message: Discord.Message) => {
 	var sheet: DiceSheet = {
 		name: "",
 		owner: "",
 		rolls: [],
 	};
+	const filter = (m: Discord.Message) => message.author.id === m.author.id;
 
 	await message.channel.send("Give this sheet a name: ").then(async () => {
 		await message.channel.awaitMessages(filter, options).then((m) => {
@@ -94,11 +97,9 @@ export const create_sheet = async (
 	return sheet;
 };
 
-export const setup_game = async (
-	message: Discord.Message,
-	filter: any,
-	options: any
-) => {
+export const setup_game = async (message: Discord.Message) => {
+	const filter = (m: Discord.Message) => message.author.id === m.author.id;
+
 	do {
 		var game_name;
 		var confirmed;
