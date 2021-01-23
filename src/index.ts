@@ -13,7 +13,9 @@ import { Command, myClient } from "./core/types";
 
 const prefix = "x/";
 
-const client = new Discord.Client() as myClient;
+const client = new Discord.Client({
+	partials: ["MESSAGE", "CHANNEL", "REACTION"],
+}) as myClient;
 client.commands = new Discord.Collection();
 
 process.stdout.write("Loading commands...");
@@ -71,6 +73,30 @@ client.on("message", async (message: Discord.Message) => {
 			`${message.author} ocorreu um erro na execução desse comando.`
 		);
 	}
+});
+
+client.on("messageReactionAdd", async (reaction, _user) => {
+	if (reaction.partial) {
+		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
+		try {
+			await reaction.fetch();
+		} catch (error) {
+			console.error(
+				"Something went wrong when fetching the message: ",
+				error
+			);
+			// Return as `reaction.message.author` may be undefined/null
+			return;
+		}
+	}
+	// Now the message has been cached and is fully available
+	console.log(
+		`${reaction.message.author}'s message "${reaction.message.content}" gained a reaction!`
+	);
+	// The reaction is now also fully available and the properties will be reflected accurately:
+	console.log(
+		`${reaction.count} user(s) have given the same reaction to this message!`
+	);
 });
 
 client.login(loginToken);
