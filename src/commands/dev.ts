@@ -1,4 +1,5 @@
 import Discord = require("discord.js");
+import { sendDiceEmbed } from "../core/components/diceroll";
 import { Command } from "../core/types";
 export const dev: Command = {
 	name: "dev",
@@ -13,10 +14,6 @@ export const dev: Command = {
 			);
 		}
 
-		const myEmbed = new Discord.MessageEmbed()
-			.setURL("http://localhost:3000")
-			.setTitle("my link");
-
-		message.channel.send(myEmbed);
+		sendDiceEmbed(message.channel);
 	},
 };

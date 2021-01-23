@@ -4,6 +4,11 @@ export type myClient = Discord.Client & {
 	commands: Discord.Collection<string, Command>;
 };
 
+export type myChannel =
+	| Discord.TextChannel
+	| Discord.DMChannel
+	| Discord.NewsChannel;
+
 export type Command = {
 	name: string;
 	aliases?: string[];
